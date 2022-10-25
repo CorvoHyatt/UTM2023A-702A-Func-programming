@@ -6,4 +6,5 @@ Christian Millán
 
 ## Contenido
 
-[Unidad 1. Introducción]()
+[Unidad 1. Introducción](./L01-intro/README.md)
+[Unidad 2. Fundamentos matématicos]()
