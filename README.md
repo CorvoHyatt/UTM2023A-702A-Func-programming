@@ -9,7 +9,7 @@ Christian Millán
 ### [Unidad 1. Introducción](./L01-intro/README.md)
 
 * List
-* Dictinaries
+* Dictionaries
 * Nest
 * List Comprenhensions
 * Dictionary Comprenhensions

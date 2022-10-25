@@ -253,7 +253,7 @@ print(alien_o)
 
 alien_o['x_position'] = 0
 alien_o['y_position'] = 25
-print(alie
+print(alien_o)
 ```
 
 **Inicializar un diccionario vacío**
@@ -288,7 +288,7 @@ print(alien_0)
 ```python
 favorite_languages = {
 	'antonio' : 'python',
-	'daniela' : 'c'.
+	'daniela' : 'c',
 	'fabian' : 'javascript',
 	'diego' : 'python'
 }
@@ -315,7 +315,7 @@ Otro ejemplo
 ```python
 favorite_languages = {
 	'antonio' : 'python',
-	'daniela' : 'c'.
+	'daniela' : 'c',
 	'fabian' : 'javascript',
 	'diego' : 'python'
 }
@@ -330,7 +330,7 @@ for name, language in favorite_languages.items():
 ```python
 favorite_languages = {
 	'antonio' : 'python',
-	'daniela' : 'c'.
+	'daniela' : 'c',
 	'fabian' : 'javascript',
 	'diego' : 'python'
 }
@@ -344,7 +344,7 @@ for name in favorite_languages.keys():
 ```python
 favorite_languages = {
 	'antonio' : 'python',
-	'daniela' : 'c'.
+	'daniela' : 'c',
 	'fabian' : 'javascript',
 	'diego' : 'python'
 }
@@ -358,7 +358,7 @@ for name in sorted(favorite_languages.keys()):
 ```python
 favorite_languages = {
 	'antonio' : 'python',
-	'daniela' : 'c'.
+	'daniela' : 'c',
 	'fabian' : 'javascript',
 	'diego' : 'python'
 }
@@ -544,7 +544,7 @@ def run():
         ('Anabel', [9.5, 9.2, 8.1], 17, 'M'),
         ('Roberto', [7.5, 7.2, 7.1], 16, 'H'),
     )
-    solution = []
+    solution = {}
     print(solution)     
 
 
