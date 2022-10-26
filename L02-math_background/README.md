@@ -35,7 +35,7 @@ for fruit in fruits:
 
 ```python
 fruits = {"apple", "banana", "cherry"}
-print('banana' is fruits)
+print('banana' in fruits)
 ```
 
 **Agregar un elemento al conjunto**
@@ -117,7 +117,7 @@ print(fruits)
 letters = {"a", "b" , "c"}
 numbers = {1, 2, 3}
 
-alophanumerics = letter.union(numbers)
+alphanumerics = letter.union(numbers)
 print(alphanumerics)
 ```
 
@@ -143,24 +143,24 @@ my_set = fruits.intersection(logos)
 print(my_set)
 ```
 
-**Mantener a todos menos a los duplicados con `simmetric_difference_update()`**
+**Mantener a todos menos a los duplicados con `symmetric_difference_update()`**
 
 ```python
 fruits = {"apple", "banana", "cherry"}
 logos = {"google", "microsoft", "apple"}
 
-fruits.simmetric_difference_update(logos)
+fruits.symmetric_difference_update(logos)
 
 print(fruits)
 ```
 
-**Mantener a todos menos a los duplicados `simmetric_difference()`**
+**Mantener a todos menos a los duplicados `symmetric_difference()`**
 
 ```python
 fruits = {"apple", "banana", "cherry"}
 logos = {"google", "microsoft", "apple"}
 
-x = fruits.simmetric_difference(logos)
+x = fruits.symmetric_difference(logos)
 
 print(x)
 ```
@@ -169,20 +169,29 @@ print(x)
 
 | Método | Descripción |
 | --- | --- |
-| add() | Agregar un nuevo elemento al conjunto |
-| clear() | Remueve todos los elementos del conjunto |
-| copy() | Devuelve una copia del conjunto |
-| difference() | Devuelve un conjunto que contiene la diferencia entre dos o más conjuntos |
-| difference_update() | Elimina un elemento den el conjunto que también esta incluido en otro conjunto. |
-| discard() | Elimina un elemento |
-| intersection() | Devuelve un conjunto, que es la intersección de dos conjuntos |
-| intersection_update() | Elimina los elementos de un conjunto que no están presentes en otro conjunto o en otros conjuntos especificados. |
-| isdisjoint() | Devuelve si dos conjuntos tienen una intersección o no |
-| issubset() | Devuelve si otro conjunto esta contenido en un conjunto |
-| issuperset() | Devuelve si un conjunto esta contenido en otro conjunto |
-| pop() | Eliminar un elemento del conjunto |
-| remove() | Elimina el elemento especifico |
-| symmetric_difference() | Devuelve un conjunto con la diferencia simétrica de dos conjuntos |
-| symmetric_difference_update() | Inserta la diferencia simétrica de un conjunto en otro conjunto  |
-| union() | Devuelve un conjunto que contiene la unión de dos conjuntos |
-| update() | Actualiza el conjunto con la unión de un conjunto con otro conjunto. |
+| `add()` | Agregar un nuevo elemento al conjunto |
+| `clear()` | Remueve todos los elementos del conjunto |
+| `copy()` | Devuelve una copia del conjunto |
+| `difference()` | Devuelve un conjunto que contiene la diferencia entre dos o más conjuntos |
+| `difference_update()` | Elimina un elemento den el conjunto que también esta incluido en otro conjunto. |
+| `discard()` | Elimina un elemento |
+| `intersection()` | Devuelve un conjunto, que es la intersección de dos conjuntos |
+| `intersection_update()` | Elimina los elementos de un conjunto que no están presentes en otro conjunto o en otros conjuntos especificados. |
+| `isdisjoint()` | Devuelve si dos conjuntos tienen una intersección o no |
+| `issubset()` | Devuelve si otro conjunto esta contenido en un conjunto |
+| `issuperset()` | Devuelve si un conjunto esta contenido en otro conjunto |
+| `pop()` | Eliminar un elemento del conjunto |
+| `remove()` | Elimina el elemento especifico |
+| `symmetric_difference()` | Devuelve un conjunto con la diferencia simétrica de dos conjuntos |
+| `symmetric_difference_update()` | Inserta la diferencia simétrica de un conjunto en otro conjunto  |
+| `union()` | Devuelve un conjunto que contiene la unión de dos conjuntos |
+| `update()` | Actualiza el conjunto con la unión de un conjunto con otro conjunto. |
+
+## Ejercicios
+
+A partir de de la definición de la tupla `students`, crear los siguientes conjuntos (**sets**):
+
+- El conjunto de todos los estudiantes, donde el elemento sea el nombre
+- El conjunto de todos los estudiantes con una edad mayor o igual a 18, donde el elemento sea una tupla (nombre, edad)
+- El conjunto de todos las estudiantes con una edad menor a 18 y sexo ‘M’, donde el elemento sea una tupla (nombre, sexo)
+- El conjunto de todos los estudiantes con un promedio mayor o igual a 6.0, donde el elemento sea el nombre
