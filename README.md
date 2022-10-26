@@ -14,4 +14,8 @@ Christian Millán
 * List Comprenhensions
 * Dictionary Comprenhensions
   
-### [Unidad 2. Fundamentos matématicos]()
+### [Unidad 2. Fundamentos matématicos](./L02-math_background/README.md)
+
+* Sets
+
+### [Unidad 3. Fundamentos de PF]()
