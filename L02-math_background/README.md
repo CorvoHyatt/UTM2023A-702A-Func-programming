@@ -195,3 +195,51 @@ A partir de de la definición de la tupla `students`, crear los siguientes conju
 - El conjunto de todos los estudiantes con una edad mayor o igual a 18, donde el elemento sea una tupla (nombre, edad)
 - El conjunto de todos las estudiantes con una edad menor a 18 y sexo ‘M’, donde el elemento sea una tupla (nombre, sexo)
 - El conjunto de todos los estudiantes con un promedio mayor o igual a 6.0, donde el elemento sea el nombre
+
+# Iterables
+
+Un iterador es un objeto que representa un flujo de datos. Este objeto devuelve un elemento a la vez. Un iterador Python soporta un método llamado `__next__()` y devuelve el siguiente elemento del flujo. Si no hay más elementos en el flujo, entonces devuelve una excepción `StopIteration`. Sin embargo, los iteradores no tienen que ser finitos, es perfectamente razonable escribir un iterador que produzca un flujo de datos infinito.
+
+```python
+for i in range(1, 10):
+  print(i)
+
+my_iter = iter(range(1, 4))
+print(my_iter)
+# next.__next__() es lo mismo que next(my_iter)
+print(next(my_iter))
+print(next(my_iter))
+print(next(my_iter))
+print(next(my_iter))
+```
+
+Un iterador puede ser materializado como lista o una tupla al usar las funciones constructoras: `list()` o `tuple()`
+
+```python
+my_iter = iter(range(1, 4))
+t = tuple(my_iter)
+print(t)
+```
+
+Tipos de datos que soportan iteradores:
+
+```python
+# Diccionarios
+m = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
+
+for key in m:
+    print(key, m[key])
+
+
+# El constructor dict() acepta un iterador
+L = [('Italy', 'Rome'), ('France', 'Paris'), ('US', 'Washington DC')]
+dict(iter(L))
+
+
+# Los sets también pueden tomar datos de un iterable y permiten iterar sobre sus elementos
+S = {2, 3, 5, 7, 11, 13}
+
+for i in S:
+    print(i)
+
+```
