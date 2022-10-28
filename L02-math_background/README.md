@@ -1,5 +1,11 @@
 [Programación Funcional](../README.md)> Fundamentos matemáticos
 
+- [Conjuntos](#conjuntos)
+- [Operaciones con conjuntos](#operaciones-con-conjuntos)
+- [Ejercicios](#ejercicios)
+- [Iterables](#iterables)
+- [Leer archivo csv](#leer-archivo-csv)
+
 ## Conjuntos
 
 Los conjuntos `set` almacenan múltiples valores en una variable. Recordar que un conjunto es una colección de elementos desordenados, no intercambiables, no tienen un posición en la estructura y no se permiten elementos duplicados.
@@ -200,7 +206,7 @@ A partir de de la definición de la tupla `students`, crear los siguientes conju
 
 Mediante operaciones de conjuntos obtener el conjunto de alumnos reprobados `not_aproved_students`. Tomar en cuenta los conjuntos: `all_students` y `aproved_students`.
 
-# Iterables
+## Iterables
 
 Un iterador es un objeto que representa un flujo de datos. Este objeto devuelve un elemento a la vez. Un iterador Python soporta un método llamado `__next__()` y devuelve el siguiente elemento del flujo. Si no hay más elementos en el flujo, entonces devuelve una excepción `StopIteration`. Sin embargo, los iteradores no tienen que ser finitos, es perfectamente razonable escribir un iterador que produzca un flujo de datos infinito.
 
@@ -248,7 +254,7 @@ for i in S:
 
 ```
 
-# Leer archivo csv
+## Leer archivo csv
 
 [csv - CSV File Reading and Writing - Python 3.11.0 documentation](https://docs.python.org/es/3/library/csv.html)
 
