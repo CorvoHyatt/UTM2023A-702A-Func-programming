@@ -172,19 +172,19 @@ print(x)
 | `add()` | Agregar un nuevo elemento al conjunto |
 | `clear()` | Remueve todos los elementos del conjunto |
 | `copy()` | Devuelve una copia del conjunto |
-| `difference()` | Devuelve un conjunto que contiene la diferencia entre dos o más conjuntos |
+| `difference()` o `-` | Devuelve un conjunto que contiene la diferencia entre dos o más conjuntos |
 | `difference_update()` | Elimina un elemento den el conjunto que también esta incluido en otro conjunto. |
 | `discard()` | Elimina un elemento |
-| `intersection()` | Devuelve un conjunto, que es la intersección de dos conjuntos |
+| `intersection()` o `&` | Devuelve un conjunto, que es la intersección de dos conjuntos |
 | `intersection_update()` | Elimina los elementos de un conjunto que no están presentes en otro conjunto o en otros conjuntos especificados. |
 | `isdisjoint()` | Devuelve si dos conjuntos tienen una intersección o no |
 | `issubset()` | Devuelve si otro conjunto esta contenido en un conjunto |
 | `issuperset()` | Devuelve si un conjunto esta contenido en otro conjunto |
 | `pop()` | Eliminar un elemento del conjunto |
 | `remove()` | Elimina el elemento especifico |
-| `symmetric_difference()` | Devuelve un conjunto con la diferencia simétrica de dos conjuntos |
+| `symmetric_difference()` o `^` | Devuelve un conjunto con la diferencia simétrica de dos conjuntos |
 | `symmetric_difference_update()` | Inserta la diferencia simétrica de un conjunto en otro conjunto  |
-| `union()` | Devuelve un conjunto que contiene la unión de dos conjuntos |
+| `union()` o `|` | Devuelve un conjunto que contiene la unión de dos conjuntos |
 | `update()` | Actualiza el conjunto con la unión de un conjunto con otro conjunto. |
 
 ## Ejercicios
@@ -246,4 +246,26 @@ S = {2, 3, 5, 7, 11, 13}
 for i in S:
     print(i)
 
+```
+
+# Leer archivo csv
+
+[csv - CSV File Reading and Writing - Python 3.11.0 documentation](https://docs.python.org/es/3/library/csv.html)
+
+```python
+import csv
+
+def read_csv():
+    with open('./students.csv') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',')
+        header = next(reader)
+        data = []
+        for row in reader:
+            iterable = zip(header, row)
+            tudents = {key: value for key, value in iterable}
+            data.append(students)
+    return data
+
+if __name__ == '__main__':
+    students_d = read_csv()
 ```
