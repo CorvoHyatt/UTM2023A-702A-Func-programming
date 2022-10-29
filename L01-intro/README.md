@@ -1,4 +1,4 @@
-[Programación Funcional](../README.md)> Introducción
+[Programación Funcional](../README.md)> 1. Introducción
 
 ## Contenido
 

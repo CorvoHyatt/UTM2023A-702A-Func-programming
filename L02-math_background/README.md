@@ -1,8 +1,8 @@
-[Programación Funcional](../README.md)> Fundamentos matemáticos
+[Programación Funcional](../README.md)> 2. Fundamentos matemáticos
 
 - [Conjuntos](#conjuntos)
 - [Operaciones con conjuntos](#operaciones-con-conjuntos)
-- [Ejercicios](#ejercicios)
+- [Ejercicios 2.1](#ejercicios-21)
 - [Iterables](#iterables)
 - [Leer archivo csv](#leer-archivo-csv)
 
@@ -193,7 +193,7 @@ print(x)
 | `union()` o `|` | Devuelve un conjunto que contiene la unión de dos conjuntos |
 | `update()` | Actualiza el conjunto con la unión de un conjunto con otro conjunto. |
 
-## Ejercicios
+## Ejercicios 2.1
 
 A partir de de la definición de la tupla `students`, crear los siguientes conjuntos (**sets**):
 
@@ -275,3 +275,4 @@ def read_csv():
 if __name__ == '__main__':
     students_d = read_csv()
 ```
+[`Anterior`](../L01-intro/README.md) | [`Siguiente`]()
