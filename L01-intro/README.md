@@ -1,8 +1,23 @@
 [Programación Funcional](../README.md)> Introducción
 
-# Contenido
+## Contenido
 
-# Listas
+- [Contenido](#contenido)
+- [Listas](#listas)
+- [Uso de listas](#uso-de-listas)
+- [Slides](#slides)
+- [Tuplas](#tuplas)
+- [Dictionaries](#dictionaries)
+- [Anidamiento de estructuras](#anidamiento-de-estructuras)
+- [Una lista de diccionarios](#una-lista-de-diccionarios)
+- [Una lista en un diccionario](#una-lista-en-un-diccionario)
+- [Un diccionario en un diccionario](#un-diccionario-en-un-diccionario)
+- [List Comprehensions](#list-comprehensions)
+	- [Ejercicios 1.1:](#ejercicios-11)
+- [Dictionary comprehensions](#dictionary-comprehensions)
+	- [Ejercicios 1.2](#ejercicios-12)
+
+## Listas
 
 Recuerda que una lista es una colección de elementos en un orden en particular. Se pueden crear listas que incluyan letras, dígitos, cadenas. Se puede colocar cualquier tipo de dato en una lista y los elementos de la lista no necesitan estar en un orden en particular. 
 
@@ -180,7 +195,7 @@ sum(numbers)
 
 Más detalles en [statistics](https://docs.python.org/3/library/statistics.html).
 
-## Trabajar con parte de una lista
+## Slides
 
 **Slicing**
 
@@ -233,7 +248,7 @@ coordenates = (400, 100)
 print(coordenates)
 ```
 
-# Diccionaries
+## Dictionaries
 
 Un diccionario permite conectar piezas de información relacionada. Los diccionarios permiten almacenar casi cualquier tipo de información. 
 
@@ -367,7 +382,7 @@ for language in favorite_languages.values():
 	print(language)
 ```
 
-# Anidamientos
+## Anidamiento de estructuras
 
 ## Una lista de diccionarios
 
@@ -429,7 +444,7 @@ users = {
 
 ```
 
-# List Comprehensions
+## List Comprehensions
 
 Un ***list comprenhension*** combina el ciclo `for` y la creación de nuevos elementos en una sola línea y automáticamente agrega cada nuevo elemento a la lista.
 
@@ -464,7 +479,7 @@ if __name__ == '__main__':
     run()
 ```
 
-Ejercicios:
+### Ejercicios 1.1:
 
 A partir de de la definición de la tupla `students`, crear las siguientes listas:
 
@@ -491,7 +506,7 @@ if __name__ == '__main__':
     run()
 ```
 
-# Dictionary comprehensions
+## Dictionary comprehensions
 
 Al igual que los list comprehensions se puede crear diccionarios a partir de una lista o cualquier iterable.
 
@@ -524,14 +539,14 @@ if __name__ == '__main__':
     run()
 ```
 
-Ejercicios:
+### Ejercicios 1.2
 
 A partir de de la definición de la tupla `students`, crear los siguientes diccionarios, donde su nombre sea su clave y los demás valores:
 
-- Todos los estudiantes
-- Todos los estudiantes con una edad mayor o igual a 18
-- Todos las estudiantes con una edad menor a 18 y sexo ‘M’
-- Todos los estudiantes con un promedio mayor o igual a 6.0
+1. Todos los estudiantes
+2. Todos los estudiantes con una edad mayor o igual a 18
+3. Todos las estudiantes con una edad menor a 18 y sexo ‘M’
+4. Todos los estudiantes con un promedio mayor o igual a 6.0
 
 ```python
 from statistics import mean
@@ -551,4 +566,3 @@ def run():
 if __name__ == '__main__':
     run()
 ```
-
