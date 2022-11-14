@@ -26,4 +26,7 @@ Los objetivos de esta asignatura son:
 * Sets
 * Iterables
 
-### [Unidad 3. Fundamentos de PF]()
+### [Unidad 3. Fundamentos de PF](./L03-functions/README.md)
+
+* Functions
+* Type hits
