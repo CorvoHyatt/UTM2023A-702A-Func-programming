@@ -291,4 +291,132 @@ from pizza import *
 
 # Type hits
 
-Uso de type hits
+```python
+def greet(name: str) -> str:
+    return "Hello, " + name
+```
+
+```python
+def headline(text: str, align: bool = True) -> str:
+	if align:
+		return f"{text.title()}\n{'-' * len(text)}"
+	else:
+		return f" {text.title()} ".center(50, "o")
+```
+
+```python
+>>> print(headline("python type checking"))
+Python Type Checking
+--------------------
+
+>>> print(headline("python type checking", align=False))
+oooooooooooooo Python Type Checking oooooooooooooo
+```
+
+# Type Checking
+
+Es necesario instalar `Mypy` en el ambiente virtual
+
+```python
+def headline(text: str, align: bool = True) -> str:
+	if align:
+		return f"{text.title()}\n{'-' * len(text)}"
+	else:
+		return f" {text.title()} ".center(50, "o")
+
+print(headline("python type checking"))
+print(headline("python type checking", align="center"))
+```
+
+Ejecutar
+
+```python
+mypy headlines.py
+
+```
+
+**Ventas y desventajas de Type Hits**
+
+- Ayuda a identificar ciertos errores
+- Ayuda a documentar el código
+- Permite construir y mantener una arquitectura limpia
+
+Sin embargo el tipado estático tiene algunas desventajas:
+
+- Toma tiempo y esfuerzo
+- Es mejor en versiones recientes de Python
+- Reduce ligeramente el tiempo de ejecución
+
+# Anotations
+
+En las funciones, se puede anotar los argumentos y los valores de retorno.
+
+```python
+import math
+
+def circumference(radius: float) -> float:
+	return 2 * math.pi * radius
+```
+
+```python
+>>> circumference.__annotations__
+{'radius': <class 'float'>, 'return': <class 'float'>}
+>>> circumference(1.23)
+7.728317927830891
+```
+
+reveal.py
+
+```python
+import math
+reveal_type(math.pi)
+
+radius = 1
+circumference = 2 * math.pi * radius
+reveal_locals()
+```
+
+Ejecución
+
+```python
+❯ mypy reveal.py
+reveal.py:2: note: Revealed type is "builtins.float"
+reveal.py:6: note: Revealed local types are:
+reveal.py:6: note:     circumference: builtins.float
+reveal.py:6: note:     radius: builtins.int
+Success: no issues found in 1 source file
+```
+
+```python
+❯ python3 reveal.py
+Traceback (most recent call last):
+  File "reveal.py", line 2, in <module>
+    reveal_type(math.pi)
+NameError: name 'reveal_type' is not defined
+```
+
+Anotaciones en variables
+
+```python
+>>> pi: float = 3.142
+>>> def circumference(radius: float) -> float:
+>>>     return 2 * pi * radius
+
+>>> circumference.__annotations__
+{'radius': <class 'float'>, 'return': <class 'float'>}
+
+>>> __annotations__
+{'pi': <class 'float'>}
+
+>>> circumference(1)
+6.284
+>>> nothing: str
+
+>>> nothing
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+    nothing
+NameError: name 'nothing' is not defined
+>>> __annotations__
+{'pi': <class 'float'>, 'nothing':<class 'str'>}
+```
