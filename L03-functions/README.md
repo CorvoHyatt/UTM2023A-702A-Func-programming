@@ -86,7 +86,7 @@ musician = get_formatted_name('john', 'hooker', 'lee')
 print(musician)
 ```
 
-**Llamadas a función equivalentes:**
+**Equivalencia de llamadas a función:**
 
 ```python
 # A dog named Willie.
