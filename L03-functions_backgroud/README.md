@@ -1,4 +1,4 @@
-[Programación Funcional](../README.md)> 3. Funciones
+[Programación Funcional](../README.md)> 3. Básicos de funciones
 
 ## Funciones
 
@@ -420,3 +420,11 @@ NameError: name 'nothing' is not defined
 >>> __annotations__
 {'pi': <class 'float'>, 'nothing':<class 'str'>}
 ```
+
+Ejercicio. Aplicar todo lo aprendido en esta sección al sigiente código: [Games cards](./code/game/game_cards.py)
+
+* Ambientes virtuales
+* Módulos
+* Type hits
+* Type checking
+* Imprimir quién gana

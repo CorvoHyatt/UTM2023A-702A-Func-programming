@@ -26,7 +26,22 @@ Los objetivos de esta asignatura son:
 * Sets
 * Iterables
 
-### [Unidad 3. Fundamentos de PF](./L03-functions/README.md)
+### [Unidad 3. Fundamentos de PF](./L03-functions_backgroud/)
 
-* Functions
+* Conceptos básicos de funciones
+* Módulos
 * Type hits
+
+### [Unidad 4. Funciones](./L04-functions/README.md)
+
+* Objetos
+* Funciones almacenadas
+* Alias
+* Funciones como parámetros
+* Funciones lambda
+* Funciones como valor de retorno
+* Versiones de funciones de operadores estándar
+
+### Recursos
+
+* [Crear un ambiente virtual](https://github.com/christiane-millan/misc/blob/master/python/001_ambientes_virtuales.md)
