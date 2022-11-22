@@ -421,7 +421,7 @@ NameError: name 'nothing' is not defined
 {'pi': <class 'float'>, 'nothing':<class 'str'>}
 ```
 
-Ejercicio. Aplicar todo lo aprendido en esta sección al sigiente código: [Games cards](./code/game/game_cards.py)
+Ejercicio. Aplicar todo lo aprendido en esta sección al siguiente código: [Games cards](./code/game/game_cards.py)
 
 * Ambientes virtuales
 * Módulos
