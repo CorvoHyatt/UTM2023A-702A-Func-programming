@@ -42,6 +42,21 @@ Los objetivos de esta asignatura son:
 * Funciones como valor de retorno
 * Versiones de funciones de operadores estándar
 
+### [5. Mutabilidad](./L05-Mutabilidad/README.md)
+
+* Tipos de datos mutables e inmutables
+* Copia a la defensiva
+* Cambiar objetos inmutables
+  * Uso de slides
+  * Uso de comprenhensions
+  * Uso de ciclos
+  * Convertir a lista
+
+### [6. Recursividad](./L06-Recursividad/README.md)
+
+* Recursión
+* 
+
 ### Recursos
 
 * [Crear un ambiente virtual](https://github.com/christiane-millan/misc/blob/master/python/001_ambientes_virtuales.md)
