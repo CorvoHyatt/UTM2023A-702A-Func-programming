@@ -55,7 +55,11 @@ Los objetivos de esta asignatura son:
 ### [6. Recursividad](./L06-Recursividad/README.md)
 
 * Recursión
-* 
+
+### [7. Cierres](./L07-closures/REAMDE.md)
+
+* Cierres
+* Composición de funciones
 
 ### Recursos
 
