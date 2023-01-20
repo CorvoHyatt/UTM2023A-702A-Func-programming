@@ -61,6 +61,17 @@ Los objetivos de esta asignatura son:
 * Cierres
 * Composición de funciones
 
+### [8. Iteradores](./L08-iterators/README.md)
+
+* Iterables
+* Iterables de transformación
+* Iterables de reducción
+
+### [9. Generadores](./L09-generators/README.md)
+
+* Generadores
+* Generator comprehensions
+  
 ### Recursos
 
 * [Crear un ambiente virtual](https://github.com/christiane-millan/misc/blob/master/python/001_ambientes_virtuales.md)
