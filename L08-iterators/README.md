@@ -215,82 +215,158 @@ La función `join()` une a todos los elementos de b un crea una sola cadena. `�
 ## Iteradores de transformación
 
 La programación funcional se prefieren los iterbales sobre las listas, porque existe menos riesgo de efectos secundarios. Frecuentemente se requiere transformar un flujo iterable de alguna forma, en Python se incluye un número de funciones estándar que realizan esto.
-Enumerate
+
+# Enumerate
+
+```python
 a = ('red', 'green', 'blue')
 for i, s in enumerate(a):
 	print(i, s)
+```
+
 Este es un lenguaje común que es utilizado si se requiere acceder al contador del ciclo con el ciclo. En este caso, el ciclo opera tres veces, con i = 0, después con 1, después con 2. El código imprime tres líneas.
+
+```python
 0 red
 1 green
 2 blue
-Para comprender como funciona, se implementa enumerate de una manera más convencional
+```
+
+Para comprender como funciona, se implementa `enumerate` de una manera más convencional
+
+```python
 a = ('red', 'green', 'blue')
 for t in enumerate(a):
 	print(t)
+```
+
 Salida:
+
+```python
 (0, 'red')
 (1, 'green')
 (2, 'blue')
-Lo que hace enumerate es retornar una serie de tuplas. En la versión original del ciciclo, simplemente se desempaca esta tupla a i, s por lo que i toma los valores de 0, 1, y 2; y s toma los valores de red, green y blue.
-Esta es una transformación muy util. En numerate es opcional colocar el valor inicial, si no se quiere iniciar desde cero.
+```
+
+Lo que hace enumerate es retornar una serie de tuplas. En la versión original del ciciclo, simplemente se desempaca esta tupla a `i, s` por lo que `i` toma los valores de `0`, `1,` y `2`; y `s` toma los valores de `red`, `green` y `blue`.
+
+Esta es una transformación muy util. En `numerate` es opcional colocar el valor inicial, si no se quiere iniciar desde cero.
+
+```python
 a = ('red', 'green', 'blue')
 for i, s in enumerate(a, 15):
 	print(i, s)
+```
+
 Salida
+
+```python
 15 red
 16 green
 17 blue
-Zip
-zip permite aplicar un ciclo sobre más de una secuencia en el mismo ciclo:
+```
+
+# Zip
+
+`zip` permite aplicar un ciclo sobre más de una secuencia en el mismo ciclo:
+
+```python
 first = ('John', 'Anne', 'Mary', 'Peter') 
 last = ('Brown', 'Smith', 'Jones', 'Cooper') 
 age = (25, 33, 41, 28)
 for f, l, a in zip(first, last, age):
 	print(f, l, a)
+```
+
 Salida
+
+```python
 John Brown 25
 Anne Smith 33
 Mary Jones 41
 Peter Cooper 28
-En la primera pasada a través del ciclo, f, l y a son asignados al primer elemento first, last, y age respectivamente. En la segunda pasada f, l y a son asignados al segundo elemento de first, last y age, y así sucesivamente. Se puede suponer, que zip produce tuplas que son empacadas en f, l y a.
-Como zip transforma iterables.
+```
+
+En la primera pasada a través del ciclo, `f`, `l` y `a` son asignados al primer elemento `first`, `last`, y `age` respectivamente. En la segunda pasada `f`, `l` y `a` son asignados al segundo elemento de `first`, `last` y `age`, y así sucesivamente. Se puede suponer, que `zip` produce tuplas que son empacadas en `f`, `l` y `a`.
+
+## Como `zip` transforma iterables.
+
 zip acepta conjunto de iterables, y los transforma en un iterador de tuplas:
+
+```python
 a = (10, 11, 12, 13) 
 b = (20, 21, 22, 23) 
 c = (30, 31, 32, 33)
 
 z = zip(a, b, c)
 print(list(z))
-Si se convierte el iterador z a una lista, se verá de la siguiente forma:
+```
+
+Si se convierte el iterador `z` a una lista, se verá de la siguiente forma:
+
+```python
 [(10, 20, 30), (11, 21, 31), (12, 22, 32), (13, 23, 33)]
+```
+
 Este es reorganizado de manera que cada tupla de salida contiene el n-ésimo elemento de cada interable de entrada. Exactemente como se vio en el ejemplo de los nombres.
+
 ¿Qué sucede cuando se utiliza un ciclo sobre el flujo de zip? Por ejemplo:
+
+```python
 for t in zip(a, b, c):
 	print(t)
+```
+
 Se imprimira cad tupla en turno:
+
+```python
 (10, 20, 30)
 (11, 21, 31)
 (12, 22, 32)
 (13, 23, 33)
+```
+
 Y, por supuesto, si se desempaca la tupla en el ciclo:
+
+```python
 for x, y, x in zip(a, b, c):
 	print(x, y, z)
-Se estarán procesando las tres listas originales, a, b y c al mismo tiempo. Justo como en el ejemplo de los nombres.
-Flujo con diferentes tamaños
+```
+
+Se estarán procesando las tres listas originales, `a`, `b` y `c` al mismo tiempo. Justo como en el ejemplo de los nombres.
+
+## Flujo con diferentes tamaños
+
 Si accidentalmente, los flujos originales tiene diferente tamaño, zip terminara con el flujo más pequeño:
+
+```python
 a = (10, 11, 12)
 b = (20, 21)
 c = (30, 31, 32, 33)
 
 z = zip(a, b, c)
 print(list(z))
+```
+
 Esto imprimirá lo siguiente:
+
+```python
 [(10, 20, 30), (11, 21, 31)]
- zip en auto-reversa
+```
+
+## `zip` en auto-reversa
+
 Para realizar lo contrario a zip, este mismo permite au auto-reversa.  Considerando la salida del ejemplo anterior:
+
+```python
 [(10, 20, 30), (11, 21, 31), (12, 22, 32), (13, 23, 33)]
-El primer elemento de cada tupla da (10, 11, 12, 13) el cual es exactamente la misma tupla original, el problema es que la salida de la función zip, es un iterador que provee un conjunto de tuplas. Pero no podemos solo pasar el iterador de nuevo a través de zip, ya que espera que las tuplas que se pasen esten separadas como argumentos diferentes.
-Afortunamente, podemos utilizar el operador * que conveierte el iterador a una lista de argumentos. *z es equivalente a convertir z a una lista y entonces pasar a z[0], z[1], z[2], z[3]:
+```
+
+El primer elemento de cada tupla da `(10, 11, 12, 13)` el cual es exactamente la misma tupla original, el problema es que la salida de la función zip, es un iterador que provee un conjunto de tuplas. Pero no podemos solo pasar el iterador de nuevo a través de zip, ya que espera que las tuplas que se pasen esten separadas como argumentos diferentes.
+
+Afortunamente, podemos utilizar el operador `*` que conveierte el iterador a una lista de argumentos. `*z` es equivalente a convertir `z` a una lista y entonces pasar a `z[0]`, `z[1]`, `z[2]`, `z[3]`:
+
+```python
 a = (10, 11, 12, 13) 
 b = (20, 21, 22, 23) 
 c = (30, 31, 32, 33)
@@ -299,36 +375,72 @@ z = zip(a, b, c)
 
 restored = zip(*z)
 print(list(restored)) 
+```
+
 Esto nos devuelve nuestros datos originales:
+
+```python
 [(10, 11, 12, 13), (20, 21, 22, 23), (30, 31, 32, 33)]
-filter
-La función filter puede ser utilizada para eliminar elementos de un iterable, basado en una función de prueba. Este retorna un iterador que accesa al resultado. Aquí el ejemplo:
+```
+
+# `filter`
+
+La función `filter` puede ser utilizada para eliminar elementos de un iterable, basado en una función de prueba. Este retorna un iterador que accesa al resultado. Aquí el ejemplo:
+
+```python
 a = [3, 2, 1, 6, 7, 0]
 f = filter(lambda x: x > 2, a)
-Este código utiliza una lambda como función de prueba. En esta caso, la función retorna true si el valor de x es mayor que 2. Esta prueba es aplicada a cada elemento del iterable a. Solamente aquellos elementos que pasan a prueba son incluidos en el iterable de salida. Si se imprime list(f), son tendremos dos elementos que son menores a 2:
+```
+
+Este código utiliza una lambda como función de prueba. En esta caso, la función retorna true si el valor de `x` es mayor que `2`. Esta prueba es aplicada a cada elemento del iterable `a`. Solamente aquellos elementos que pasan a prueba son incluidos en el iterable de salida. Si se imprime `list(f)`, son tendremos dos elementos que son menores a `2`:
+
+```python
 [3, 6, 7]
-Se puede utilizar filter en un ciclo for, este loop utiliza filter para imprimir solo aquellas cadenas no vacías:
+```
+
+Se puede utilizar `filter` en un ciclo `for`, este loop utiliza `filter` para imprimir solo aquellas cadenas no vacías:
+
+```python
 strings = ('red', '', 'green', '', 'blue') 
 for s in filter(len, strings):
 	print(s)
-La lista de cadenas contiene tanto cadenas vacías como no vacías, se utiliza filter para aplicar la función len. Para aquellos string que esta vacíos, len retorna 0. Python trata al 0 como False, por lo que esas cadenas serán filtradas. 
+```
+
+La lista de cadenas contiene tanto cadenas vacías como no vacías, se utiliza `filter` para aplicar la función `len`. Para aquellos string que esta vacíos, len retorna `0`. Python trata al `0` como `False`, por lo que esas cadenas serán filtradas. 
+
+```python
 red
 green
 blue
-map
-La función map aplica la una función proporcionada, a un conjunto de argumentos. Esta retorna un iterador para acceder a los resultados.
-map con un parámetro
+```
+
+# `map`
+
+La función `map` aplica la una función proporcionada, a un conjunto de argumentos. Esta retorna un iterador para acceder a los resultados.
+
+## `map` con un parámetro
+
 Ejemplo
+
+```python
 def square(x):
 	return x*x
 
-
 a = [2, 5, 6]
 m = map(square, a)
+```
+
 La función map aplica square a cada valor en a, retornado los valores al cuadrado a través de un iterador. Si convertimos m a una lista y se imprime, se obtiene:
+
+```python
 [4, 25, 36]
-Evaluación perezosa
+```
+
+## Evaluación perezosa
+
 Todas las funciones descritas anteriormente utilizan la evaluación perezosa. Esto se ilustra agregando alguna sentencia extra print al ejemplo anterior:
+
+```python
 def square(x):
 	print('Evaluating square', x)
 	return x*x
@@ -342,7 +454,11 @@ print('Entering loop')
 for x in m:
 	print('Start of loop body')
 	print(x)
+```
+
 El código imprime:
+
+```python
 Calling map
 Called map
 Entering loop
@@ -355,58 +471,115 @@ Start of loop body
 Evaluating square 6
 Start of loop body
 36
-map con más de un parámetro
+```
+
+## `map` con más de un parámetro
+
 Se puede utilizar map con funciones que utilizan más de un parámetro. Se debe aplicar map con parámetros iterables extra, uno para cada argumento que la función de aplicación toma.
+
 Por ejemplo, en el código previo, la función square solo toma un argumento, map requiere dos argumentos (la función y un iterable pupliendo una serie de valores para el argumento de la función).
+
 En el siguiente ejemplo, add toma dos argumentos, por lo que map requiere tres argumentos (la función, y dos iterables supliendo una serie de valores para el primer y segundo argumento).
+
+```python
 import operator
 
 a = [20, 30, 40]
 b = range(3)
 
 m = map(operator.sub, a, b)
-Esta ocasión utilizamos la función operator.sub. Esta función toma dos argumentos x, y y retorna x-y. Es necesario importar el módulo operator para utilizar sub.
-Se requieren dos iterables debido a que operator.sub toma dos argumentos, a es una lista, b es un range(3), el cual provee 0, 1, 2. Por lo que map calcula:
+```
+
+Esta ocasión utilizamos la función `operator.sub`. Esta función toma dos argumentos `x, y` y retorna `x-y`. Es necesario importar el módulo `operator` para utilizar `sub`.
+
+Se requieren dos iterables debido a que `operator.sub` toma dos argumentos, `a` es una lista, `b` es un `range(3)`, el cual provee `0, 1, 2`. Por lo que `map` calcula:
+
+```python
 sub(20, 0)
 sub(30, 1)
 sub(40, 2)
-El resultado, si se imprime list(m) es:
+```
+
+El resultado, si se imprime `list(m)` es:
+
+```python
 [20, 29, 38]
-reversed
-reversed es una función util que retorna un iterador que invierte el orden de los elementos de la secuencia original. Por ejemplo:
+```
+
+# `reversed`
+
+`reversed` es una función util que retorna un iterador que invierte el orden de los elementos de la secuencia original. Por ejemplo:
+
+```python
 a = [2, 4, 6, 8]
 r = reversed(a)
 print(list(r))
-Aquí r es un iterador que accede a los elementos de a en un orden inverso. Cuando se crea una lista de r, esta contiene:
+```
+
+Aquí r es un iterador que accede a los elementos de `a` en un orden inverso. Cuando se crea una lista de `r`, esta contiene:
+
+```python
 [8, 6, 4, 2]
+```
+
 Nótese que reverse no trabaja con todo tipo de iterables. Este solo trabaja sobre secuencias (list, tuples, strings, etc.) No se puede hacer lo siguiente:
+
+```python
 a = [2, 5, 6]
 m = map(square, a)
 r = reversed(m)
-Esto es porque m no es una secuencia. Se puede arreglar este problema al convertir m a una lista o tupla antes de pasarla a reversed:
+```
+
+Esto es porque `m` no es una secuencia. Se puede arreglar este problema al convertir `m` a una lista o tupla antes de pasarla a `reversed`:
+
+```python
 a = [2, 5, 6]
     m = map(square, a)
     r = reversed(list(m))
+```
+
 Para más detalles de como ordenar objetos que no soportan reversed, se puede crear un objeto reversible.
-reversed sobre un rango
-Se puede utilizar reversed con range, resulta muy útil para conteos regresivos. Por ejemplo, para contar de 9 a 0 se puede utilizar este range:
+
+## `reversed` sobre un rango
+
+Se puede utilizar `reversed` con `range`, resulta muy útil para conteos regresivos. Por ejemplo, para contar de 9 a 0 se puede utilizar este `range`:
+
+```python
 for i in range(9, -1, -1):
 	print(i)
+```
+
 Este código puede resultar poco intuitivo. De forma alterna, se pude utilizar:
+
+```python
 for i in reversed(range(10)):
 	print(i)
-reverse
+```
+
+## `reverse`
+
 las listas tienen un método reverse que no hace los mismo que reversed, pero opera sobre una lista.
+
+```python
 k = [1, 3, 7]
 k.reverse()
 print(k)    # [7, 3, 1]
+```
+
 Este método no retorna nada, solo invierte la lista. 
-sorted
+
+# `sorted`
+
 sorted no es como las otras funciones de transformación. Funciona sobre cualquier iterable pero no produce un iterador como salida, en su lugar crea una lista. 
-Comparación entre sorted y reversed:
-reversed require una secuencia como entrada pero crea un iterador perezoso como salida. Esto es porque, lo primero que se requiere al invertir los elementos, es el último elemento. No se pude invertir una serie a menos que se tenga un acceso aleatorio a los elementos, por lo que una secuencia es requerida como entrada.
-sorted puede aceptar iteradores perezosos como entrada pero crea una lista como salida, Python utiliza un algoritmo de ordenamiento llamado Timsort, que es un híbrido entre el ordenamiento merge y el ordenamiento sort. El algoritmo acepta los datos elemento por elemento pero requiere acceso aleatorio a la lista de salida para colocar los elementos en la posición final correcta.
-Ordenamiento por mes y año
+
+Comparación entre `sorted` y `reversed:`
+
+- `reversed` require una secuencia como entrada pero crea un iterador perezoso como salida. Esto es porque, lo primero que se requiere al invertir los elementos, es el último elemento. No se pude invertir una serie a menos que se tenga un acceso aleatorio a los elementos, por lo que una secuencia es requerida como entrada.
+- sorted puede aceptar iteradores perezosos como entrada pero crea una lista como salida, Python utiliza un algoritmo de ordenamiento llamado Timsort, que es un híbrido entre el ordenamiento merge y el ordenamiento sort. El algoritmo acepta los datos elemento por elemento pero requiere acceso aleatorio a la lista de salida para colocar los elementos en la posición final correcta.
+
+## Ordenamiento por mes y año
+
+```python
 dates = ['2019/04/06',
              '2017/04/15',
              '2019/03/21',
@@ -418,7 +591,11 @@ dates = ['2019/04/06',
              '2018/04/11',
              '2017/03/14']
 sorted_dates = sorted(dates)
+```
+
 Salida es:
+
+```python
 		2017/03/14
     2017/03/20
     2017/04/15
@@ -429,8 +606,15 @@ Salida es:
     2019/04/06
     2019/04/08
     2019/09/30
+```
+
 Si  se ordena através del mes:
+
+```python
 sorted_by_month = sorted(sorted_dates, key=lambda x: x[5:7])
+```
+
+```python
 		2017/03/20
     2017/03/14
     2019/03/21
@@ -441,58 +625,124 @@ sorted_by_month = sorted(sorted_dates, key=lambda x: x[5:7])
     2019/04/08
     2018/06/30
     2019/09/30
+```
+
 La función sort es estable. Esto significa que cuando se ordena por mes, todas las entradas que tiene el mismo mes mantienen su posición original, relativo a la otra. Por lo que se verá que primero se agrupan las fechas por mes, pero en cada grupo del mismo mes los elementos son ordenados por año.
+
 Esto produce una lista que es primero ordenada por mes, y después ordenada por fecha por cada grupo, primero se debe ordenar por date y después por mes.
-Algunas funciones key útiles.
+
+## Algunas funciones `key` útiles.
+
 Se tiene la siguiente lista:
+
+```python
 people = [('John', 'Brown', 25), ('Anne', 'Smith', 33), ('Mary', 'Jones', 41),
               ('Peter', 'Cooper', 28)]
+```
+
 Se pueden ordenar pos su segundo nombre:
+
+```python
 sorted_by_surname = sorted(people, key=lambda x: x[1])
+```
+
 Para comprender el código es necesario analizar la función lambda (obtiene el segundo elemento de la tupla).
-El modulo operator tiene una función: itemgetter, para ayudar en esta situación. La función itemgetter reemplaza el indexado de una lista (el operador []).
+
+El modulo operator tiene una función: `itemgetter`, para ayudar en esta situación. La función `itemgetter` reemplaza el indexado de una lista (el operador `[]`).
+
+```python
 from operator import itemgetter
 sorted_by_surname = sorted(people, key=itemgetter(1))
-itemgetter(1) no retorna el segundo elemento. Este retorna una función que toma el segundo elemento de cualquier secuencia que se pase. Actúa como un closure:
+```
+
+`itemgetter(1)` no retorna el segundo elemento. Este retorna una función que toma el segundo elemento de cualquier secuencia que se pase. Actúa como un closure:
+
+```python
 f = itemgetter(1)
 t = ('Anne', 'Smith', 33) 
 s = f(t) # 'Smith'
-Otro operador de función útil es methodcaller. Este retorna una función que llama a un método en particular en cualquier objeto que se le pase.
+```
+
+Otro operador de función útil es `methodcaller`. Este retorna una función que llama a un método en particular en cualquier objeto que se le pase.
+
+```python
 fruits = ['Banana', 'apple', 'Apricot', 'Clementine', 'avocado']
 sorted_names = sorted(fruits)
+```
+
 El resultado, puede no ser el deseado dado que las cadenas al ser ordenada son sensibles al uso de mayúsculas. Para solucionar esto se puede utilizar:
+
+```python
 sorted_names = sorted(fruits, key=lambda x: x.lower()))
+```
+
 Una mejor solución es:
+
+```python
 from operator import methodcaller
 sorted_names = sorted(fruits, key=methodcaller('lower'))
-methodcaller crea una función. Esta nueva función llama al método lower para cualquier objeto que se le pase.
+```
+
+`methodcaller` crea una función. Esta nueva función llama al método `lower` para cualquier objeto que se le pase.
+
+```python
 f = methodcaller('lower')
 s = f('Banana') # 'banana' equivalent to 'Banana'.lower()
-Invirtiendo el orden del ordenamiento
+```
+
+## Invirtiendo el orden del ordenamiento
+
+```python
 sorted_dates = sorted(dates, reverse=True)
-sort
+```
+
+## `sort`
+
 Las listas tiene un método sort que hace exactamente lo mismo que sorted, pero opera sobre la lista.
+
+```python
 k = [1, 7, 2, 4, 1]
 k.sort()
 print(k) # [1, 1, 2, 4, 7]
+```
+
 Este método no retorna nada, solo ordena a la lista misma.
-sort tienen el mismo parámetro opcional, key y reverse, que tienen sorted. La función es exactamente la misma.
-Combinación de funciones
+
+`sort` tienen el mismo parámetro opcional, `key` y `reverse`, que tienen `sorted`. La función es exactamente la misma.
+
+# Combinación de funciones
+
 Es muy útil combinar funciones, en una sola expresión. 
-map y filter
+
+## `map` y `filter`
+
+```python
 import math
 k = [1, 4, -2, 16, -3, 36, -1]
 f = filter(lambda x: x>=0, k) 
 m = map(math.sqrt, f)
 print(list(m)) #[1.0, 2.0, 4.0, 6.0]
+```
+
+```python
 m = map(math.sqrt, filter(lambda x: x>=0, k))
-Pipelines
+```
+
+## Pipelines
+
 Cuando se encadenan dos o más funciones que utilizan evaluación perezosa, se crea un pipeline. 
-Ejemplo de map y filter.
+
+Ejemplo de `map` y `filter`.
+
+```python
 def same(s):
 	print('Same', s)
 	return s
+```
+
 La función same solo imprime un mensaje y retorna el mismo valor que recibe. 
+
+```python
 def not_empty(s):
 	if s:
 		print('True', s)
@@ -500,13 +750,21 @@ def not_empty(s):
 	else:
 		print('False')
 		return False
+```
+
 Esta función retorna True si la cadena no esta vacía. False de otro modo. También imprime que se hizo.
+
+```python
 k = ['a', '', 'b', '']
 m = map(same, filter(not_empty, k)) 
 print('Start')
 for s in m:
 	print('In loop', s)
+```
+
 Salida
+
+```python
 		Start
     True a
     Same a
@@ -516,34 +774,58 @@ Salida
     Same b
     In loop b
     False
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a25cc40-d482-4f63-9609-9214f32f5d28/Untitled.png)
 
 La primer iteración del ciclo imprime esto:
+
+```python
 		True a
     Same a
     In loop a
+```
+
 Primero, un conjunto de peticiones ocurren sobre el pipeline
-El ciclo solicita un valor del iterador map
-El iterador map solicita un valor del iterador filter
-El iterador filter solicita un valor del iterador de la lista
+
+1. El ciclo solicita un valor del iterador map
+2. El iterador map solicita un valor del iterador filter
+3. El iterador filter solicita un valor del iterador de la lista
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/edc37fd0-5685-46df-8f09-f365ff1b0674/Untitled.png)
 
 En seguida, las respuestas son mandadas de vuelta en el pipeline. Es cuando la función en realidad es llamada
-El iterador de la lista pasa el valor ‘a’ a través del iterador filter.
-El iterador filter pasa el valor ‘a’ a la función not_empty, la cual imprime ‘True a’ porque la cadena es no vacía.
-El iterador filter pasa el valor ‘a’ hacia el iterador map.
-El iterador map pasa el valor ‘a’ a la función same, la cual imprime ‘same a’.
-El iterador map pasa el valor ‘a’ al iterador del ciclo.
+
+1. El iterador de la lista pasa el valor `‘a’` a través del iterador `filter`.
+2. El iterador `filter` pasa el valor `‘a’` a la función `not_empty`, la cual imprime `‘True a’` porque la cadena es no vacía.
+3. El iterador `filter` pasa el valor `‘a’` hacia el iterador `map`.
+4. El iterador `map` pasa el valor `‘a’` a la función `same`, la cual imprime `‘same a’`.
+5. El iterador `map` pasa el valor `‘a’` al iterador del ciclo.
+
 En este punto, el ciclo imprime ‘in loop a’.
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e9fc6042-0946-4bfe-88db-c4adca89fa9e/Untitled.png)
+
 La segunda iteración del ciclo imprime:
+
+```python
 		False
     True b
     Same b
     In loop b
-Este paso es muy similar a la primera iteración, excepto que cuando el iterador de filter solicita un valor del iterador list, toma una cadena vacía (el segundo valor dek). Esto significa que la función not_empy imprime ‘false’  y retorna False.
-Ahora en el siguiente punto, el paso de filter es filtrar los casos cuando not_empty retorna False. Por lo que, filter no  pasa este valor de vuelta al iterador map. en su lugar lo evita. Después solicita el siguiente valor del iterador de list, el cual es ‘b’ en esta ocasión, este es pasado a través del pipeline como se hizo anteriormente con ‘a’.
-En el último intento del ciclo, filter toma el último elemento del iterador list, el cual es otra cadena vacía. Esto lo descarta  y el operador del ciclo lanza una excepción StopIteration, y el ciclo termina.
-map y zip
+```
+
+Este paso es muy similar a la primera iteración, excepto que cuando el iterador de filter solicita un valor del iterador list, toma una cadena vacía (el segundo valor dek). Esto significa que la función `not_empy` imprime `‘false’`  y retorna `False`.
+
+Ahora en el siguiente punto, el paso de `filter` es filtrar los casos cuando `not_empty` retorna `False`. Por lo que, `filter` no  pasa este valor de vuelta al iterador `map`. en su lugar lo evita. Después solicita el siguiente valor del iterador de `list`, el cual es `‘b’` en esta ocasión, este es pasado a través del pipeline como se hizo anteriormente con `‘a’`.
+
+En el último intento del ciclo, `filter` toma el último elemento del iterador `list`, el cual es otra cadena vacía. Esto lo descarta  y el operador del ciclo lanza una excepción `StopIteration`, y el ciclo termina.
+
+## `map` y `zip`
+
 En el siguiente código se utiliza map para dar formato a datos de nombres:
+
+```python
 def format_person(first, last, age):
 	return '{}, {} - age {}'.format(last, first, age)
 
@@ -554,19 +836,31 @@ age = (25, 33, 41, 28)
 m = map(format_person, first, last, age)
 
 list(map(print, m)) # Prints the result
+```
+
 La salida es:
+
+```python
 		Brown, John - age 25
     Smith, Anne - age 33
     Jones, Mary - age 41
     Cooper, Peter - age 28
+```
+
 Suponer:
+
+```python
 people = [('John', 'Brown', 25), ('Anne', 'Smith', 33), ('Mary', 'Jones', 41),
               ('Peter', 'Cooper', 28)]
-Para utilizar map, primero es necesario desempaquetarlos. Se pude utilizar zip para desempaquetar los datos:
+```
 
-````python
+Para utilizar `map`, primero es necesario desempaquetarlos. Se pude utilizar `zip` para desempaquetar los datos:
+
+```python
 m = map(format_person, *zip(*people))
-````
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/535dc9b3-9ca8-4c32-b910-77d6e5829469/Untitled.png)
 
 ## Iterables de reducción
 
