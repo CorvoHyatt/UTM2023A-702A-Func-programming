@@ -77,7 +77,7 @@ Los objetivos de esta asignatura son:
 * Aplicacines parciales
 * Currificación
 
-### [11. Functors y Monadas](./L09-generators/README.md)
+### [11. Functors y Monadas](./L11-Monads/README.md)
 
 * Functors
 * Applicative functors
