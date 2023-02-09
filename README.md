@@ -71,7 +71,18 @@ Los objetivos de esta asignatura son:
 
 * Generadores
 * Generator comprehensions
-  
+
+### [10. Aplicaciones parciales y currificación](./L10-Currying/README.md)
+
+* Aplicacines parciales
+* Currificación
+
+### [11. Functors y Monadas](./L09-generators/README.md)
+
+* Functors
+* Applicative functors
+* Monadas
+
 ### Recursos
 
 * [Crear un ambiente virtual](https://github.com/christiane-millan/misc/blob/master/python/001_ambientes_virtuales.md)
